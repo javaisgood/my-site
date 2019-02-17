@@ -6,7 +6,7 @@
 	<groupId>cn.luischen</groupId>
 	<artifactId>my-site</artifactId>
 	<version>1.0.2.RELEASE</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>my-site</name>
 	<description>Demo project for Spring Boot</description>
