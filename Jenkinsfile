@@ -4,6 +4,12 @@ pipeline {
         string(name: 'AppName', defaultValue: 'jswdwsx/blog', description: 'this is the app name')
     }
     stages {
+        stage('Configure') {
+            steps {
+                sh 'cp ~/config_file/my-site-application.yml ./src/main/resources/application-local.yml'
+                sh 'echo Configure done!'
+            }
+        }
         stage('Build jar') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
