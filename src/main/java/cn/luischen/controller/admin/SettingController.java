@@ -39,7 +39,7 @@ public class SettingController extends BaseController {
 
     @ApiOperation("进入设置页")
     @GetMapping(value = "")
-    public String setting(HttpServletRequest request){
+    public String setting(HttpServletRequest request) {
         List<OptionsDomain> optionsList = optionService.getOptions();
         Map<String, String> options = new HashMap<>();
         optionsList.forEach((option) -> {
@@ -61,7 +61,7 @@ public class SettingController extends BaseController {
                 querys.put(key, join(value));
             });
             optionService.saveOptions(querys);
-            WebConst.initConfig = querys;
+            WebConst.initConfig.putAll(querys);
 
             logService.addLog(LogActions.SYS_SETTING.getAction(), GsonUtils.toJsonString(querys), request.getRemoteAddr(), this.getUid(request));
             return APIResponse.success();
@@ -70,11 +70,6 @@ public class SettingController extends BaseController {
             return APIResponse.fail(e.getMessage());
         }
     }
-
-
-
-
-
 
 
 }
